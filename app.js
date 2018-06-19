@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const users = require('./routes/users');
-//create connection
+const connection = require('./db/connection');
 const swaggerUi = require('swagger-ui-express'),
   swaggerDocument = require('./config/swagger-config');
 const app = express();
@@ -29,6 +29,8 @@ app.use(function (req, res, next) {
 	err.status = 404;
 	next(err);
 });
+
+connection();
 
 // error handler
 app.use(function (err, req, res, next) {

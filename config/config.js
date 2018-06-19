@@ -2,4 +2,4 @@ const config = {
   db: 'test_db'
 };
 
-export default config;
+module.exports = config;

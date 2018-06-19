@@ -1,5 +1,5 @@
 const express = require('express');
-const models = require('../db/models');
+const { User } = require('../db/models');
 const router = express.Router();
 
 /* GET users listing. */
@@ -9,8 +9,7 @@ router.get('/', (req, res, next) => {
 
 /* POST new user */
 router.post('/add-user', (req, res) => {
-  let data = new models.User(req.body);
-  console.log(data);
+  let data = User(req.body);
   data.save((err, user) => {
     if (err) {
       res.json(err.toString());
